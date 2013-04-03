@@ -31,7 +31,17 @@
 \title{CoffeeScript}
 \begin{document}
 
-%TODO\tableofcontents
+\begin{titlepage}
+\pagestyle{plain}
+\begin{center}
+\vspace*{0.3\textheight}
+\includegraphics{/home/roberto/Documentos/e-dit/coffeescript/logo.png}\\[5pt]
+\vfill
+\end{center}
+\end{titlepage}
+
+
+\tableofcontents
 
   CoffeeScript is a little language that compiles into JavaScript. Underneath that awkward Java-esque patina, JavaScript has always had a gorgeous heart. CoffeeScript is an attempt to expose the good parts of JavaScript in a simple way. 
 
@@ -42,10 +52,14 @@
 
  \textbf{Latest Version:}
  1.6.2
+ 
+ 
 \begin{verbatim}
 sudo npm install -g coffee-script
 \end{verbatim}
-\subsection*{ Overview }
+
+
+\section{ Overview }
 
  \emph{CoffeeScript on the left, compiled JavaScript output on the right.}
  
@@ -135,7 +149,7 @@ cubes = (function() {
 \end{tabular}
 
 
-\subsection*{ Installation }
+\section{ Installation }
 
   The CoffeeScript compiler is itself written in CoffeeScript, using the Jison parser generator. The command-line version of coffee is available as a Node.js utility. The core compiler however, does not depend on Node, and can be run in any JavaScript environment, or in the browser (see ``Try CoffeeScript'', above). 
 
@@ -160,7 +174,7 @@ npm install -g \url{http://github.com/jashkenas/coffee-script/tarball/master}
 \begin{verbatim}
 sudo bin/cake install
 \end{verbatim}
-\subsection*{ Usage }
+\section{ Usage }
 
 
   Once installed, you should have access to the coffee command, which can execute scripts, compile .coffee files into .js, and provide an interactive REPL. The coffee command takes the following options: 
@@ -227,7 +241,7 @@ coffee -o lib/ -cw src/
 coffee
 
 \end{itemize}
-\subsection*{ Literate CoffeeScript }
+\section{ Literate CoffeeScript }
 
 
   Besides being used as an ordinary programming language, CoffeeScript may also be written in ``literate'' mode. If you name your file with a .litcoffee extension, you can write it as a Markdown document \^a€” a document that also happens to be executable CoffeeScript code. The compiler will treat any indented blocks (Markdown's way of indicating source code) as code, and ignore the rest as comments. 
@@ -237,7 +251,9 @@ coffee
 
 
   I'm fairly excited about this direction for the language, and am looking forward to writing (and more importantly, reading) more programs in this style. More information about Literate CoffeeScript, including an example program, are available in this blog post. 
-\subsection*{ Language Reference }
+
+
+\section{ Language Reference }
 
 
  \emph{ This reference is structured so that it can be read from top to bottom, if you like. Later sections use ideas and syntax previously introduced. Familiarity with JavaScript is assumed. In all of the following examples, the source CoffeeScript is provided on the left, and the direct compilation into JavaScript is on the right. }
@@ -257,8 +273,9 @@ coffee
 console.log sys.inspect object \^a†’ console.log(sys.inspect(object));
 
 
-  \textbf{Functions}
- Functions are defined by an optional list of parameters in parentheses, an arrow, and the function body. The empty function looks like this: -$>$
+\section{Functions}
+
+Functions are defined by an optional list of parameters in parentheses, an arrow, and the function body. The empty function looks like this: -$>$
  
  
 \begin{tabular}{p{0.5\textwidth} p{0.5\textwidth}}
@@ -303,7 +320,7 @@ fill = function(container, liquid) {
 \end{verbatim}
 \end{tabular}
 
-  \textbf{Objects and Arrays}
+\section{Objects and Arrays}
  The CoffeeScript literals for objects and arrays look very similar to their JavaScript cousins. When each property is listed on its own line, the commas are optional. Objects may be created using indentation instead of explicit braces, similar to YAML. 
 
 
@@ -382,7 +399,7 @@ log(object["class"]);
 \end{tabular}
 
 
-  \textbf{Lexical Scoping and Variable Safety}
+\section{Lexical Scoping and Variable Safety}
  The CoffeeScript compiler takes care to make sure that all of your variables are properly declared within lexical scope -- you never need to write var yourself.
  
  
@@ -430,8 +447,8 @@ inner = changeNumbers();
  (covered below), gives you a reliable way to figure out where to add them; if you're targeting both CommonJS and the browser: exports ? this
 
 
-  \textbf{If, Else, Unless, and Conditional Assignment}
- \textbf{If/else}
+\section{If, Else, Unless, and Conditional Assignment}
+\subsection|{If/else}
  statements can be written without the use of parentheses and curly brackets. As with functions and other block expressions, multi-line conditionals are delimited by indentation. There's also a handy postfix form, with the if or unless at the end. 
 
 
@@ -473,7 +490,7 @@ date = friday ? sue : jill;
 \end{verbatim}
 \end{tabular}
 
-  \textbf{Splats...}
+\section{Splats...}
  The JavaScript \textbf{arguments object}
  is a useful way to work with functions that accept variable numbers of arguments. CoffeeScript provides splats ..., both for function definition as well as invocation, making variable numbers of arguments a little bit more palatable. 
  
@@ -539,7 +556,7 @@ alert("The Field: " + rest);
 \end{tabular}
 
 
-  \textbf{Loops and Comprehensions}
+\section{Loops and Comprehensions}
  Most of the loops you'll write in CoffeeScript will be \textbf{comprehensions}
  over arrays, objects, and ranges. Comprehensions replace (and compile into) \textbf{for}
  loops, with optional guard clauses and the value of the current array index. Unlike for loops, array comprehensions are expressions, and can be returned and assigned. 
@@ -749,7 +766,7 @@ for (_i = 0, _len = list.length; _i < _len; _i++) {
 \end{verbatim}
 \end{tabular}
 
-  \textbf{Array Slicing and Splicing with Ranges}
+\section{Array Slicing and Splicing with Ranges}
  Ranges can also be used to extract slices of arrays. With two dots (3..6), the range is inclusive (3, 4, 5, 6); with three dots (3...6), the range excludes the end (3, 4, 5). Slices indices have useful defaults. An omitted first index defaults to zero and an omitted second index defaults to the size of the array. 
 
 
@@ -809,7 +826,7 @@ numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   Note that JavaScript strings are immutable, and can't be spliced. 
 
 
-  \textbf{Everything is an Expression (at least, as much as possible)}
+\section{Everything is an Expression (at least, as much as possible)}
  You might have noticed how even though we don't add return statements to CoffeeScript functions, they nonetheless return their final value. The CoffeeScript compiler tries to make sure that all statements in the language can be used as expressions. Watch how the return gets pushed down into each possible branch of execution in the function below. 
 
 
@@ -932,7 +949,7 @@ alert((function() {
   There are a handful of statements in JavaScript that can't be meaningfully converted into expressions, namely break, continue, and return. If you make use of them within a block of code, CoffeeScript won't try to perform the conversion. 
 
 
-  \textbf{Operators and Aliases}
+\section{Operators and Aliases}
  Because the == operator frequently causes undesirable coercion, is intransitive, and has a different meaning than in other languages, CoffeeScript compiles == into ===, and != into !==. In addition, is compiles into ===, and isnt into !==. 
 
 
@@ -1015,7 +1032,7 @@ print(inspect("My name is " + this.name));
 \end{tabular}
 
 
- \textbf{The Existential Operator}
+\section{The Existential Operator}
  It's a little difficult to check for the existence of a variable in JavaScript. if (variable) ... comes close, but fails for zero, the empty string, and false. CoffeeScript's existential operator ? returns true unless a variable is \textbf{null}
  or \textbf{undefined}
 , which makes it analogous to Ruby's nil?
@@ -1077,7 +1094,7 @@ zip = typeof lottery.drawWinner === "function" ? (_ref = lottery.drawWinner().ad
   Soaking up nulls is similar to Ruby's andand gem, and to the safe navigation operator in Groovy. 
 
 
-  \textbf{Classes, Inheritance, and Super}
+\section{Classes, Inheritance, and Super}
  JavaScript's prototypal inheritance has always been a bit of a brain-bender, with a whole family tree of libraries that provide a cleaner syntax for classical inheritance on top of JavaScript's prototypes: Base2, Prototype.js, JS.Class, etc. The libraries provide syntactic sugar, but the built-in inheritance would be completely usable if it weren't for a couple of small exceptions: it's awkward to call \textbf{super}
  (the prototype object's implementation of the current function), and it's awkward to correctly set the prototype chain. 
 
@@ -1200,7 +1217,7 @@ String.prototype.dasherize = function() {
 @property: value, and call functions defined in parent classes: @attr 'title', type: 'text'
 
 
-  \textbf{Destructuring Assignment}
+\section{Destructuring Assignment}
  To make extracting values from complex arrays and objects more convenient, CoffeeScript implements ECMAScript Harmony's proposed destructuring assignment syntax. When you assign an array or object literal to a value, CoffeeScript breaks up and matches both sides against each other, assigning the values on the right to the variables on the left. In the simplest case, it can be used for parallel assignment: 
 
 
@@ -1338,7 +1355,7 @@ Person = (function() {
 \end{verbatim}
 \end{tabular}
 
-  \textbf{Function binding}
+\section{Function binding}
  In JavaScript, the this keyword is dynamically scoped to mean the object that the current function is attached to. If you pass a function as a callback or attach it to a different object, the original value of this will be lost. If you're not familiar with this behavior, this Digital Web article gives a good overview of the quirks. 
 
 
@@ -1378,7 +1395,7 @@ Account = function(customer, cart) {
   When used in a class definition, methods declared with the fat arrow will be automatically bound to each instance of the class when the instance is constructed. 
 
 
-  \textbf{Embedded JavaScript}
+\section{Embedded JavaScript}
  Hopefully, you'll never need to use it, but if you ever need to intersperse snippets of JavaScript within your CoffeeScript, you can use backticks to pass it straight through.
  
  
@@ -1400,7 +1417,7 @@ hi = function() {
 \end{verbatim}
 \end{tabular}
 
-  \textbf{Switch/When/Else}
+\section{Switch/When/Else}
  \textbf{Switch}
  statements in JavaScript are a bit awkward. You need to remember to \textbf{break}
  at the end of every \textbf{case}
@@ -1494,7 +1511,7 @@ grade = (function() {
 \end{verbatim}
 \end{tabular}
 
-  \textbf{Try/Catch/Finally}
+\section{Try/Catch/Finally}
  Try/catch statements are just about the same as JavaScript (although they work as expressions). 
 
 
@@ -1528,7 +1545,7 @@ try {
 \end{tabular}
 
 
-  \textbf{Chained Comparisons}
+\section{Chained Comparisons}
  CoffeeScript borrows chained comparisons from Python \^a€” making it easy to test if a value falls within a certain range. 
 
 
@@ -1552,7 +1569,7 @@ healthy = (200 > cholesterol && cholesterol > 60);
 \end{verbatim}
 \end{tabular}
 
-  \textbf{String Interpolation, Block Strings, and Block Comments}
+\section{String Interpolation, Block Strings, and Block Comments}
  Ruby-style string interpolation is included in CoffeeScript. Double-quoted strings allow for interpolated values, using \#\{ ... \}, and single-quoted strings are literal. 
  
  
@@ -1651,7 +1668,7 @@ Released under the MIT License
 \end{verbatim}
 \end{tabular}
 
-  \textbf{Block Regular Expressions}
+\section{Block Regular Expressions}
  Similar to block strings and comments, CoffeeScript supports block regexes \^a€” extended regular expressions that ignore internal whitespace and can contain comments and interpolation. Modeled after Perl's /x modifier, CoffeeScript's block regexes are delimited by /// and go a long way towards making complex regular expressions readable. To quote from the CoffeeScript source: 
 
 
@@ -1680,7 +1697,7 @@ OPERATOR = /^(?:[-=]>|[-+*\/%<>&|^!?=]=|>>>=?|([-+:])\1|([&|<>])\2=?|\?\.|\.{2,3
 \end{tabular}
 
  
-\subsection*{ Cake, and Cakefiles }
+\section{ Cake, and Cakefiles }
 
 
   CoffeeScript includes a (very) simple build system similar to Make and Rake. Naturally, it's called Cake, and is used for the tasks that build and test the CoffeeScript language itself. Tasks are defined in a file named Cakefile, and can be invoked by running cake [task] from within the directory. To print a list of all the tasks and options, just type cake. 
@@ -1724,14 +1741,14 @@ task('build:parser', 'rebuild the Jison parser', function(options) {
 
   If you need to invoke one task before another \^a€” for example, running build before test, you can use the invoke function: invoke 'build'. Cake tasks are a minimal way to expose your CoffeeScript functions to the command line, so don't expect any fanciness built-in. If you need dependencies, or async callbacks, it's best to put them in your code itself \^a€” not the cake task. 
 
-\subsection*{ Source Maps }
+\section{ Source Maps }
 
 
   CoffeeScript 1.6.1 and above include support for generating source maps, a way to tell your JavaScript engine what part of your CoffeeScript program matches up with the code being evaluated. Browsers that support it can automatically use source maps to show your original source code in the debugger. To generate source maps alongside your JavaScript files, pass the --map or -m flag to the compiler. 
 
 
   For a full introduction to source maps, how they work, and how to hook them up in your browser, read the HTML5 Tutorial. 
-\subsection*{ ``text/coffeescript'' Script Tags }
+\section{ ``text/coffeescript'' Script Tags }
 
 
   While it's not recommended for serious use, CoffeeScripts may be included directly within the browser using $<$script type=''text/coffeescript''$>$ tags. The source includes a compressed and minified version of the compiler (Download current version here, 39k when gzipped) as extras/coffee-script.js. Include this file on a page with inline CoffeeScript tags, and it will compile and evaluate them in order. 
@@ -1741,12 +1758,12 @@ task('build:parser', 'rebuild the Jison parser', function(options) {
 
 
   The usual caveats about CoffeeScript apply \^a€” your inline scripts will run within a closure wrapper, so if you want to expose global variables or functions, attach them to the window object. 
-\subsection*{ Books }
+\section{ Books }
 
 
   There are a number of excellent resources to help you get started with CoffeeScript, some of which are freely available online. 
 \begin{itemize}
-\item The Little Book on CoffeeScript is a brief 5-chapter introduction to CoffeeScript, written with great clarity and precision by Alex MacCaw. 
+\item The Little Book on CoffeeScript is a brief 5-section introduction to CoffeeScript, written with great clarity and precision by Alex MacCaw. 
 \item Smooth CoffeeScript is a reimagination of the excellent book Eloquent JavaScript, as if it had been written in CoffeeScript instead. Covers language features as well as the functional and object oriented programming styles. By E. Hoigaard. 
 \item CoffeeScript: Accelerated JavaScript Development is Trevor Burnham's thorough introduction to the language. By the end of the book, you'll have built a fast-paced multiplayer word game, writing both the client-side and Node.js portions in CoffeeScript. 
 \item CoffeeScript Programming with jQuery, Rails, and Node.js is a new book by Michael Erasmus that covers CoffeeScript with an eye towards real-world usage both in the browser (jQuery) and on the server size (Rails, Node). 
@@ -1754,14 +1771,14 @@ task('build:parser', 'rebuild the Jison parser', function(options) {
 \item Testing with CoffeeScript is a succinct and freely downloadable guide to building testable applications with CoffeeScript and Jasmine. 
 
 \end{itemize}
-\subsection*{ Screencasts }
+\section{ Screencasts }
 \begin{itemize}
 \item A Sip of CoffeeScript is a Code School Course which combines 6 screencasts with in-browser coding to make learning fun. The first level is free to try out. 
 \item Meet CoffeeScript is a 75-minute long screencast by PeepCode. Highly memorable for its animations which demonstrate transforming CoffeeScript into the equivalent JS. 
 \item  If you're looking for less of a time commitment, RailsCasts' CoffeeScript Basics should have you covered, hitting all of the important notes about CoffeeScript in 11 minutes. 
 
 \end{itemize}
-\subsection*{ Examples }
+\section{ Examples }
 
 
   The best list of open-source CoffeeScript examples can be found on GitHub. But just to throw out few more: 
@@ -1782,7 +1799,7 @@ task('build:parser', 'rebuild the Jison parser', function(options) {
 's nack, a Node.js-powered Rack server. 
 
 \end{itemize}
-\subsection*{ Resources }
+\section{ Resources }
 \begin{itemize}
 \item Source Code\\ 
  Use bin/coffee to test your changes,\\ 
@@ -1805,7 +1822,7 @@ git checkout lib \&\& bin/cake build:full is a good command to run when you're w
  The CoffeeScript logo is available in Illustrator, EPS and PSD formats, for use in presentations. 
 
 \end{itemize}
-\subsection*{ Web Chat (IRC) }
+\section{ Web Chat (IRC) }
 
 
   Quick help and advice can usually be found in the CoffeeScript IRC room. Join \#coffeescript on irc.freenode.net, or click the button below to open a webchat session on this page. 
