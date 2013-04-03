@@ -29,7 +29,10 @@
 \usepackage{textcomp}
 
 \title{CoffeeScript}
+
 \begin{document}
+
+\pagenumbering{Roman}
 
 \begin{titlepage}
 \pagestyle{plain}
@@ -40,8 +43,18 @@
 \end{center}
 \end{titlepage}
 
+\vspace*{0.7\textheight}
+\section*{\textcopyleft{}   {\Large \bf e}-\emph{dit}}
+\thispagestyle{empty}
+Abril 2013, Santiago de Chile.
 
+\newpage
+\setcounter{page}{1}
 \tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
   CoffeeScript is a little language that compiles into JavaScript. Underneath that awkward Java-esque patina, JavaScript has always had a gorgeous heart. CoffeeScript is an attempt to expose the good parts of JavaScript in a simple way. 
 
@@ -49,20 +62,7 @@
   The golden rule of CoffeeScript is: \emph{``It's just JavaScript''}.
   The code compiles one-to-one into the equivalent JS, and there is no interpretation at runtime. You can use any existing JavaScript library seamlessly from CoffeeScript (and vice-versa). The compiled output is readable and pretty-printed, passes through JavaScript Lint without warnings, will work in every JavaScript runtime, and tends to run as fast or faster than the equivalent handwritten JavaScript. 
 
-
- \textbf{Latest Version:}
- 1.6.2
- 
- 
-\begin{verbatim}
-sudo npm install -g coffee-script
-\end{verbatim}
-
-
 \section{ Overview }
-
- \emph{CoffeeScript on the left, compiled JavaScript output on the right.}
- 
  
 \begin{tabular}{p{0.5\textwidth} p{0.5\textwidth}}
 \begin{verbatim}
@@ -448,7 +448,7 @@ inner = changeNumbers();
 
 
 \section{If, Else, Unless, and Conditional Assignment}
-\subsection|{If/else}
+\textbf{}|{If/else}
  statements can be written without the use of parentheses and curly brackets. As with functions and other block expressions, multi-line conditionals are delimited by indentation. There's also a handy postfix form, with the if or unless at the end. 
 
 
